@@ -3,7 +3,6 @@ package finalgame.lib.GraphicsEngine;
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.util.FPSAnimator;
 
 import finalgame.lib.Input.KeyHandler;
 import finalgame.lib.Input.MouseHandler;
@@ -19,9 +18,6 @@ public class Renderer {
         glp = GLProfile.getDefault();
         GLCapabilities caps = new GLCapabilities(glp);
         window = GLWindow.create(caps);
-
-//         FPSAnimator animator = new FPSAnimator(window, 60);
-//         animator.start();
 
         // Add event Handling
         window.addGLEventListener(new EventListener());

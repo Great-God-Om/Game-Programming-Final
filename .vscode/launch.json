@@ -8,7 +8,11 @@
 			"type": "java",
 			"name": "Launch Current File",
 			"request": "launch",
-			"mainClass": "${file}"
+			"mainClass": "${file}",
+			"env": {
+				"__NV_PRIME_RENDER_OFFLOAD": 1,
+				"__GLX_VENDOR_LIBRARY_NAME": "nvidia"
+			}
 		},
 		{
 			"type": "java",
@@ -16,7 +20,8 @@
 			"request": "launch",
 			"mainClass": "finalgame.App",
 			"vmArgs": "-Djogl.disable.openglcore=false",
-			"projectName": "app"
+			"projectName": "app",
+			
 		}
 	]
 }

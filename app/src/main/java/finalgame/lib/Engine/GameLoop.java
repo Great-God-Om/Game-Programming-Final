@@ -16,6 +16,10 @@ public class GameLoop {
 		Thread thread = new Thread() {
 			public void run() {
 				running = true;
+				
+				// When GameLoop Starts tell World to initialize itself
+				World.init();
+				
 				lastUpdateTime = System.nanoTime();
 				while(running) {
 					updates = 0;
