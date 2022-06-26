@@ -14,7 +14,6 @@ public class Renderer {
     public static void init() {
         // Initialize OpenGL and GLWindow
         GLProfile.initSingleton();
-        // glp = GLProfile.get(GLProfile.GL2);
         glp = GLProfile.getDefault();
         GLCapabilities caps = new GLCapabilities(glp);
         window = GLWindow.create(caps);

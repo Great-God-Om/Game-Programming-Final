@@ -16,10 +16,7 @@ public class GameLoop {
 		Thread thread = new Thread() {
 			public void run() {
 				running = true;
-				
-				// When GameLoop Starts tell World to initialize itself
-				World.init();
-				
+								
 				lastUpdateTime = System.nanoTime();
 				while(running) {
 					updates = 0;
@@ -35,7 +32,6 @@ public class GameLoop {
 						try {
 							Thread.sleep((targetTime - timeTaken) / 1000000);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}

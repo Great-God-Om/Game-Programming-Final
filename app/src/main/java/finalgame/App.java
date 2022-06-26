@@ -5,11 +5,13 @@ package finalgame;
 
 import finalgame.lib.Engine.GameLoop;
 import finalgame.lib.GraphicsEngine.Renderer;
+import finalgame.world.World;
 
 public class App {
 
     public static void main(String[] args) {
-      Renderer.init();
+      World.init();
       GameLoop.start();
+      Renderer.init();
     }
 }
