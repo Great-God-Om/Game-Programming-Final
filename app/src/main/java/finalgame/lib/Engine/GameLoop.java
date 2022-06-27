@@ -10,8 +10,8 @@ public class GameLoop {
 	private static long lastUpdateTime = 0;
 
 	private static int targetFPS = 60;
-	private static int targetTime = 1000000000 / targetFPS;
-
+	private static final int targetTime = 1000000000 / targetFPS;
+	public static final float deltaTime = 1.0f / 1000000000 * targetTime;
 	public static void start() {
 		Thread thread = new Thread() {
 			public void run() {
