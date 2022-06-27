@@ -26,8 +26,6 @@ public class PlayerAnimationController extends AnimationController{
 			new ImageResource("Player/Idle/player_idle_6.png"),
 			new ImageResource("Player/Idle/player_idle_7.png"),
 			new ImageResource("Player/Idle/player_idle_8.png"),
-
-
 		}, true); // Initialize IDLE state animation
 		animations[0].rate = 20;
 	}

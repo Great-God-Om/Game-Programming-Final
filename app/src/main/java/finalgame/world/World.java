@@ -4,15 +4,12 @@ import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
 
-import finalgame.lib.Resources.ImageResource;
-
 public class World {
 	private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-	public static final float TILE_SIZE = 3f;
-	public static ImageResource image;
+	public static final float TILE_SIZE = 2f;
+	public static long gameTime = 0;
 	public static void init(){
-		image = new ImageResource("1");
-		Board.generateDungeon(15);
+		Board.generateDungeon(25);
 		gameObjects.add(new Player());
 	}
 	public static void update() {
@@ -22,10 +19,9 @@ public class World {
 	}
 
 	public static void render(GL2 gl) {
-		// gameObjects.add(new GameObject());
+		Board.render(gl);
 		for (GameObject gameObject : gameObjects) {
 			gameObject.render(gl);
 		}
-		// Board.render(gl);
 	}
 }
