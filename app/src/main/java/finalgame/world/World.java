@@ -6,10 +6,10 @@ import com.jogamp.opengl.GL2;
 
 public class World {
 	private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-	public static final float TILE_SIZE = 2f;
+	public static final float TILE_SIZE = 1f;
 	public static long gameTime = 0;
 	public static void init(){
-		Board.generateDungeon(25);
+		Board.generateDungeon();
 		gameObjects.add(new Player());
 	}
 	public static void update() {
