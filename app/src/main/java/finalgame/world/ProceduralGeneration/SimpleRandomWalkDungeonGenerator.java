@@ -14,9 +14,8 @@ public class SimpleRandomWalkDungeonGenerator extends AbstractDungeonGenerator {
 
 	public Dungeon runProceduralGeneration() {
 		HashSet<Vector2d> floorPositions = runRandomWalk();
-		System.out.println(floorPositions.size());
-		floorPositions.forEach( x -> System.out.println(x));
-		return new Dungeon(floorPositions);
+		HashSet<Vector2d> wallPositions = WallGenerator.createWalls(floorPositions);
+		return new Dungeon(floorPositions, wallPositions);
 	}
 
 	protected HashSet<Vector2d> runRandomWalk() {

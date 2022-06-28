@@ -23,7 +23,7 @@ public class Board {
 	};
 
 	public static ImageResource[] wallTiles = new ImageResource[] {
-			new ImageResource("Dungeon/wall/wall_side_mid_left.png"),
+			new ImageResource("Dungeon/wall/wall_top.png"),
 			new ImageResource("Dungeon/wall/wall_side_mid_right.png"),
 			new ImageResource("Dungeon/wall/wall_corner_bottom_left.png"),
 			new ImageResource("Dungeon/wall/wall_corner_bottom_right.png"),
@@ -39,6 +39,12 @@ public class Board {
 		}
 		dungeon.floorTiles.forEach(tile -> {
 			Drawing.drawImage(floorTiles[0], tile.x,
+					tile.y,
+					new float[] { 1, 1, 1 }, gl);
+		});
+
+		dungeon.wallTiles.forEach(tile -> {
+			Drawing.drawImage(wallTiles[0], tile.x,
 					tile.y,
 					new float[] { 1, 1, 1 }, gl);
 		});

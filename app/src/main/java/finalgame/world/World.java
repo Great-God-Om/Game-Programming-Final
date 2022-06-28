@@ -17,7 +17,7 @@ public class World {
 			object.update();
 		}
 	}
-
+	
 	public static void render(GL2 gl) {
 		Board.render(gl);
 		for (GameObject gameObject : gameObjects) {
