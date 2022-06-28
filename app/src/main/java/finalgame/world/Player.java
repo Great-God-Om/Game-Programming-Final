@@ -23,11 +23,11 @@ public class Player extends GameObject {
 		}
 		if ((!KeyHandler.getKey(KeyEvent.VK_W) && !KeyHandler.getKey(KeyEvent.VK_D) && !KeyHandler.getKey(KeyEvent.VK_S)
 				&& !KeyHandler.getKey(KeyEvent.VK_A))) {
-					this.position.x += this.velocity.x;
-					this.position.y += this.velocity.y;
-					this.velocity.x = 0;
-					this.velocity.y = 0;
-					Camera.moveCameraToPosition(this.position.x, this.position.y);
+			this.position.x += this.velocity.x;
+			this.position.y += this.velocity.y;
+			this.velocity.x = 0;
+			this.velocity.y = 0;
+			Camera.moveCameraToPosition(this.position.x, this.position.y);
 		}
 
 	}
