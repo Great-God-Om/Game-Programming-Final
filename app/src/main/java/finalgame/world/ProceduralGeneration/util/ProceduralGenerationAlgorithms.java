@@ -1,10 +1,9 @@
-package finalgame.world.ProceduralGeneration;
+package finalgame.world.ProceduralGeneration.util;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import finalgame.lib.util.Vector2d;
-import finalgame.world.ProceduralGeneration.util.Direction2D;
 
 /**
  * ProceduralGenerationAlgorithms

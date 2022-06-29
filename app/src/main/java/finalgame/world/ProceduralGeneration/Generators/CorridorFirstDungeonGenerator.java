@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import finalgame.lib.util.Vector2d;
 import finalgame.world.ProceduralGeneration.Dungeon;
-import finalgame.world.ProceduralGeneration.ProceduralGenerationAlgorithms;
 import finalgame.world.ProceduralGeneration.util.Direction2D;
+import finalgame.world.ProceduralGeneration.util.ProceduralGenerationAlgorithms;
 
 public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenerator {
 	private int corridorLength = 15, corridorCount = 10;

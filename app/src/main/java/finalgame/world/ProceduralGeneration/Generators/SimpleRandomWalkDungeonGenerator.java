@@ -5,7 +5,7 @@ import java.util.Random;
 
 import finalgame.lib.util.Vector2d;
 import finalgame.world.ProceduralGeneration.Dungeon;
-import finalgame.world.ProceduralGeneration.ProceduralGenerationAlgorithms;
+import finalgame.world.ProceduralGeneration.util.ProceduralGenerationAlgorithms;
 
 public class SimpleRandomWalkDungeonGenerator extends AbstractDungeonGenerator {
 	protected static Vector2d startPosition = new Vector2d(0, 0);
