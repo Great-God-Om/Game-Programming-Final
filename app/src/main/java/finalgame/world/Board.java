@@ -4,14 +4,15 @@ import com.jogamp.opengl.GL2;
 
 import finalgame.world.ProceduralGeneration.Dungeon;
 import finalgame.world.ProceduralGeneration.Generators.AbstractDungeonGenerator;
-import finalgame.world.ProceduralGeneration.Generators.CorridorFirstDungeonGenerator;
+import finalgame.world.ProceduralGeneration.Generators.RoomsFirstDungeonGenerator;
 
 public class Board {
 	private static AbstractDungeonGenerator dungeonGenerator;
 	public static Dungeon dungeon;
 
 	public static void generateDungeon() {
-		dungeonGenerator = new CorridorFirstDungeonGenerator();
+		// dungeonGenerator = new CorridorFirstDungeonGenerator();
+		dungeonGenerator = new RoomsFirstDungeonGenerator();
 		dungeon = dungeonGenerator.generateDungeon();
 	}
 

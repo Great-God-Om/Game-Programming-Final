@@ -59,18 +59,17 @@ public class ProceduralGenerationAlgorithms {
 			if (room.size.y >= minHeight && room.size.x >= minWidth) {
 				if (rand.nextFloat() < 0.5f) {
 					if (room.size.y >= minHeight * 2) {
-						splitHorizontally(minWidth, roomsQueue, room);
+						splitHorizontally(minHeight, roomsQueue, room);
 					} else if (room.size.x >= minWidth * 2) {
-						splitVertically(minHeight, roomsQueue, room);
-
+						splitVertically(minWidth, roomsQueue, room);
 					} else {
 						roomsList.add(room);
 					}
 				} else {
 					if (room.size.y >= minHeight * 2) {
-						splitVertically(minHeight, roomsQueue, room);
+						splitVertically(minWidth, roomsQueue, room);
 					} else if (room.size.x >= minWidth * 2) {
-						splitHorizontally(minWidth, roomsQueue, room);
+						splitHorizontally(minHeight, roomsQueue, room);
 					} else {
 						roomsList.add(room);
 					}
@@ -80,16 +79,16 @@ public class ProceduralGenerationAlgorithms {
 		return roomsList;
 	}
 
-	private static void splitVertically(int minHeight, Queue<Boundsint> roomsQueue, Boundsint room) {
+	private static void splitVertically(int minWidth, Queue<Boundsint> roomsQueue, Boundsint room) {
 		var xSplit = Math.max(1, Math.round(new Random().nextFloat() * room.size.x));
-		Boundsint room1 = new Boundsint(room.min, new Vector2d(xSplit, room.min.y));
+		Boundsint room1 = new Boundsint(room.min, new Vector2d(xSplit, room.size.y));
 		Boundsint room2 = new Boundsint(new Vector2d(room.min.x + xSplit, room.min.y),
 				new Vector2d(room.size.x - xSplit, room.size.y));
 		roomsQueue.add(room1);
 		roomsQueue.add(room2);
 	}
 
-	private static void splitHorizontally(int minWidth, Queue<Boundsint> roomsQueue, Boundsint room) {
+	private static void splitHorizontally(int minHeight, Queue<Boundsint> roomsQueue, Boundsint room) {
 		var ySplit = Math.max(1, Math.round(new Random().nextFloat() * room.size.y));
 		Boundsint room1 = new Boundsint(room.min, new Vector2d(room.size.x, ySplit));
 		Boundsint room2 = new Boundsint(new Vector2d(room.min.x, room.min.y + ySplit),
