@@ -9,9 +9,9 @@ import finalgame.world.ProceduralGeneration.ProceduralGenerationAlgorithms;
 
 public class SimpleRandomWalkDungeonGenerator extends AbstractDungeonGenerator {
 	protected static Vector2d startPosition = new Vector2d(0, 0);
-	protected static int iterations = 20;
+	protected static int iterations = 15;
 
-	protected static int walkLength = 100;
+	protected static int walkLength = 20;
 	public static boolean startRandomlyEachIteration = true;
 
 	

@@ -1,15 +1,17 @@
 package finalgame.world.ProceduralGeneration.Generators;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import finalgame.lib.util.Vector2d;
 import finalgame.world.ProceduralGeneration.Dungeon;
 import finalgame.world.ProceduralGeneration.ProceduralGenerationAlgorithms;
+import finalgame.world.ProceduralGeneration.util.Direction2D;
 
 public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenerator {
-	private int corridorLength = 14, corridorCount = 5;
-	private float roomPercent = 0.8f;
+	private int corridorLength = 15, corridorCount = 10;
+	private float roomPercent = 0.5f;
 
 	/**
 	 * @return Dungeon
@@ -33,10 +35,39 @@ public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenera
 		floorTiles = createCorridiors(floorTiles, potentialRoomPositions);
 		// Create Rooms and add them to FloorTiles
 		HashSet<Vector2d> roomPositions = createRooms(potentialRoomPositions);
+		// Find Dead ends with no rooms generated and create rooms at those position
+		ArrayList<Vector2d> deadEnds = findAllDeadEnds(floorTiles);
+		createRoomsAtDeadEnd(deadEnds, roomPositions);
+		// Add all rooms to floor positions
 		floorTiles.addAll(roomPositions);
 		// Find and Add the Walls
 		wallTiles = WallGenerator.createWalls(floorTiles);
 		return new Dungeon(floorTiles, wallTiles);
+	}
+
+	private void createRoomsAtDeadEnd(ArrayList<Vector2d> deadEnds, HashSet<Vector2d> roomFloors) {
+		for (Vector2d position : deadEnds) {
+			if(roomFloors.contains(position) == false){
+				var room = runRandomWalk(iterations, walkLength, position);
+				roomFloors.addAll(room);
+			}
+		}
+	}
+
+	private ArrayList<Vector2d> findAllDeadEnds(HashSet<Vector2d> floorPositions) {
+		ArrayList<Vector2d> deadEnds = new ArrayList<Vector2d>();
+		for (Vector2d position : floorPositions) {
+			int neighborCount = 0;
+			for (Vector2d direction : Direction2D.cardinalDiretionsList) {
+				if(floorPositions.contains(Vector2d.add(position, direction))){
+					neighborCount++;
+				}
+			}
+			if(neighborCount == 1){
+				deadEnds.add(position);
+			}
+		}
+		return deadEnds;
 	}
 
 	/**
@@ -50,7 +81,7 @@ public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenera
 		// Create Return HashSet
 		HashSet<Vector2d> roomPositions = new HashSet<Vector2d>();
 		// Determine the amount of rooms to create
-		int roomsToCreateCount = Math.round(roomPositions.size() * roomPercent);
+		int roomsToCreateCount = Math.round(potentialRoomPositions.size() * roomPercent);
 		// Sort rooms by hashcode to create illusion of random order then only take the amount specified by rooms to create
 		var rooms = potentialRoomPositions.stream().sorted((v1, v2) -> Integer.compare(v1.hashCode(), v2.hashCode()))
 				.limit(roomsToCreateCount)
