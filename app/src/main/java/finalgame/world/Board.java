@@ -25,11 +25,7 @@ public class Board {
 	};
 
 	public static ImageResource[] wallTiles = new ImageResource[] {
-			new ImageResource("Dungeon/wall/wall_top.png"),
-			new ImageResource("Dungeon/wall/wall_side_mid_right.png"),
-			new ImageResource("Dungeon/wall/wall_corner_bottom_left.png"),
-			new ImageResource("Dungeon/wall/wall_corner_bottom_right.png"),
-			new ImageResource("Dungeon/wall/wall_top_mid.png"),
+			new ImageResource("Dungeon/wall/wall_top.png")
 	};
 	public static void generateDungeon() {
 		dungeonGenerator = new CorridorFirstDungeonGenerator();

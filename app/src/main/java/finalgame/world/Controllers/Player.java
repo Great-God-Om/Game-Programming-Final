@@ -1,11 +1,12 @@
-package finalgame.world;
+package finalgame.world.Controllers;
 
 import com.jogamp.newt.event.KeyEvent;
 
 import finalgame.lib.GraphicsEngine.Camera;
-import finalgame.lib.GraphicsEngine.PlayerAnimationController;
 import finalgame.lib.Input.KeyHandler;
 import finalgame.lib.util.Vector2d;
+import finalgame.world.GameObject;
+import finalgame.world.World;
 
 public class Player extends GameObject {
 	public Player() {

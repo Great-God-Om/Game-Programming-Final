@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import com.jogamp.opengl.GL2;
 
+import finalgame.world.Controllers.Player;
+
 public class World {
 	private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	public static final float TILE_SIZE = 1f;
