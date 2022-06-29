@@ -1,6 +1,8 @@
 package finalgame.world.ProceduralGeneration;
 
 import java.util.HashSet;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 import com.jogamp.opengl.GL2;
 
@@ -23,12 +25,16 @@ public class Dungeon {
 	public static ImageResource[] wallTilesImages = new ImageResource[] {
 			new ImageResource("Dungeon/wall/wall_top.png")
 	};
+
+	public static ImageResource exit = new ImageResource("Dungeon/floor_ladder.png");
 	public HashSet<Vector2d> floorTiles;
 	public HashSet<Vector2d> wallTiles;
+	public Vector2d exitPosition;
 
 	public Dungeon(HashSet<Vector2d> floorTiles, HashSet<Vector2d> wallTiles) {
 		this.floorTiles = floorTiles;
 		this.wallTiles = wallTiles;
+		exitPosition = floorTiles.stream().collect(Collectors.toList()).get(new Random().nextInt(floorTiles.size()));
 	}
 
 	public void render(GL2 gl){
@@ -43,5 +49,7 @@ public class Dungeon {
 					tile.y,
 					new float[] { 1, 1, 1 }, gl);
 		});
+
+		Drawing.drawImage(exit, exitPosition.x, exitPosition.y, new float[]{1,1,1}, gl);
 	}
 }

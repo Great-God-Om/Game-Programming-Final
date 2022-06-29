@@ -11,6 +11,7 @@ public abstract class GameObject {
 	public AnimationController anim;
 	public void update() {
 	}
+	
 
 	
 	/** 

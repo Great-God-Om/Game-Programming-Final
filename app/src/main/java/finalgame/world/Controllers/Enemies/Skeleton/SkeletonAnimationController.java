@@ -13,7 +13,7 @@ class SKELETON_IDLE_STATE extends AnimationState {
 			new ImageResource("Enemies/skeleton/idle/skeleton_v2_3.png"),
 			new ImageResource("Enemies/skeleton/idle/skeleton_v2_4.png"),
 	}, true);
-	this.animation.rate = 20;
+	this.animation.rate = 15;
 	}
 }
 public class SkeletonAnimationController extends EnemyAnimationController{
