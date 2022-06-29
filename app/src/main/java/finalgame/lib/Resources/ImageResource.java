@@ -29,6 +29,10 @@ public class ImageResource {
 		}
 	}
 
+	
+	/** 
+	 * @return Texture
+	 */
 	public Texture getTexture(){
 		if(image == null){
 			return null;

@@ -11,19 +11,38 @@ public class Vector2d {
 		this.y = y;
 	}
 
+	
+	/** 
+	 * @param a
+	 * @param b
+	 * @return Vector2d
+	 */
 	public static Vector2d add(Vector2d a, Vector2d b) {
 		return new Vector2d(a.x + b.x, a.y + b.y);
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return String.format("(%s,%s)", this.x, this.y);
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.x, this.y);
 	}
 
+	
+	/** 
+	 * @param oth
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object oth) {
 		if (oth == this) {

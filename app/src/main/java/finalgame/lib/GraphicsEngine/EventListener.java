@@ -8,6 +8,10 @@ import finalgame.world.World;
 
 public class EventListener implements GLEventListener {
 
+	
+	/** 
+	 * @param drawable
+	 */
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
@@ -17,11 +21,19 @@ public class EventListener implements GLEventListener {
 		gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
 	}
 
+	
+	/** 
+	 * @param drawable
+	 */
 	@Override
 	public void dispose(GLAutoDrawable drawable) {
 
 	}
 
+	
+	/** 
+	 * @param drawable
+	 */
 	@Override
 	public void display(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
@@ -33,6 +45,14 @@ public class EventListener implements GLEventListener {
 		// gl.glScalef(1.02f, 1.02f, 0);
 	}
 
+	
+	/** 
+	 * @param drawable
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 */
 	@Override
 	public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
 		GL2 gl = drawable.getGL().getGL2();

@@ -12,6 +12,10 @@ public abstract class GameObject {
 	public void update() {
 	}
 
+	
+	/** 
+	 * @param gl
+	 */
 	public void render(GL2 gl) {
 		anim.render(gl, position);
 	}

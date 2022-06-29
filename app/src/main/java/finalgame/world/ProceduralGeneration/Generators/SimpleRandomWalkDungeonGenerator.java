@@ -9,18 +9,29 @@ import finalgame.world.ProceduralGeneration.ProceduralGenerationAlgorithms;
 
 public class SimpleRandomWalkDungeonGenerator extends AbstractDungeonGenerator {
 	protected static Vector2d startPosition = new Vector2d(0, 0);
-	private static int iterations = 20;
+	protected static int iterations = 20;
 
-	public static int walkLength = 100;
+	protected static int walkLength = 100;
 	public static boolean startRandomlyEachIteration = true;
 
+	
+	/** 
+	 * @return Dungeon
+	 */
 	public Dungeon runProceduralGeneration() {
-		HashSet<Vector2d> floorPositions = runRandomWalk();
+		HashSet<Vector2d> floorPositions = runRandomWalk(iterations, walkLength, startPosition);
 		HashSet<Vector2d> wallPositions = WallGenerator.createWalls(floorPositions);
 		return new Dungeon(floorPositions, wallPositions);
 	}
 
-	protected HashSet<Vector2d> runRandomWalk() {
+	
+	/** 
+	 * @param iterations
+	 * @param walkLength
+	 * @param startPosition
+	 * @return HashSet<Vector2d>
+	 */
+	protected HashSet<Vector2d> runRandomWalk(int iterations, int walkLength, Vector2d startPosition) {
 		Vector2d currentPosition = startPosition;
 		HashSet<Vector2d> floorPositions = new HashSet<Vector2d>();
 		for (int i = 0; i < iterations; i++) {

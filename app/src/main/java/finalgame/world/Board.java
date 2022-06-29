@@ -37,6 +37,10 @@ public class Board {
 		dungeon = dungeonGenerator.generateDungeon();
 	}
 
+	
+	/** 
+	 * @param gl
+	 */
 	public static void render(GL2 gl) {
 		if (dungeon == null) {
 			return;

@@ -34,6 +34,11 @@ public class PlayerAnimationController extends AnimationController{
 
 	}
 
+	
+	/** 
+	 * @param gl
+	 * @param pos
+	 */
 	public void render(GL2 gl, Vector2d pos){
 		animations[0].play();
 		Drawing.drawImage(animations[0].getImage(), pos.x, pos.y, new float[]{1,1,1}, gl);

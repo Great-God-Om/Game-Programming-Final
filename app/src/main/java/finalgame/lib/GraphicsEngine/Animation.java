@@ -29,6 +29,10 @@ public class Animation {
 		}
 	}
 
+	
+	/** 
+	 * @return ImageResource
+	 */
 	public ImageResource getImage() {
 		return frames[currentFrame];
 	}

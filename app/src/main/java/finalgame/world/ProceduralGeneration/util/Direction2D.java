@@ -13,6 +13,10 @@ public class Direction2D {
 					new Vector2d(0, -1),
 					new Vector2d(-1, 0)));
 
+	
+	/** 
+	 * @return Vector2d
+	 */
 	public static Vector2d getRandomCardinalDirection() {
 		return cardinalDiretionsList.get(new Random().nextInt(cardinalDiretionsList.size()));
 	}

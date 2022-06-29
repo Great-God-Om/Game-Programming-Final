@@ -7,6 +7,14 @@ import finalgame.lib.Resources.ImageResource;
 import finalgame.world.World;
 
 public class Drawing {
+	
+	/** 
+	 * @param image
+	 * @param x
+	 * @param y
+	 * @param tint
+	 * @param gl
+	 */
 	public static void drawImage(ImageResource image, float x, float y, float[] tint, GL2 gl) {
 		Texture texture = image.getTexture();
 
@@ -33,6 +41,13 @@ public class Drawing {
 		gl.glBindTexture(GL2.GL_TEXTURE_2D, 0);
 	}
 
+	
+	/** 
+	 * @param x
+	 * @param y
+	 * @param color
+	 * @param gl
+	 */
 	public static void drawRect(float x, float y, float[] color, GL2 gl) {
 		gl.glColor3fv(color, 0);
 		gl.glBegin(GL2.GL_QUADS);

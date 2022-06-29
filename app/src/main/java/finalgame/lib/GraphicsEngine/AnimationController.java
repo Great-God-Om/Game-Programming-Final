@@ -11,6 +11,11 @@ public abstract class AnimationController {
 
 	}
 
+	
+	/** 
+	 * @param gl
+	 * @param pos
+	 */
 	public void render(GL2 gl, Vector2d pos){
 	}
 }

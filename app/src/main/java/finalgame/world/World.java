@@ -18,6 +18,10 @@ public class World {
 		}
 	}
 	
+	
+	/** 
+	 * @param gl
+	 */
 	public static void render(GL2 gl) {
 		Board.render(gl);
 		for (GameObject gameObject : gameObjects) {
