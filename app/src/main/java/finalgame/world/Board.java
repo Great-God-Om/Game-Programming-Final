@@ -5,11 +5,13 @@ import com.jogamp.opengl.GL2;
 import finalgame.lib.GraphicsEngine.Drawing;
 import finalgame.lib.Resources.ImageResource;
 import finalgame.world.ProceduralGeneration.Dungeon;
-import finalgame.world.ProceduralGeneration.SimpleRandomWalkDungeonGenerator;
+import finalgame.world.ProceduralGeneration.Generators.AbstractDungeonGenerator;
+import finalgame.world.ProceduralGeneration.Generators.CorridorFirstDungeonGenerator;
 
 public class Board {
 	private static final int MAX_ROOM_SIZE = 10;
 	private static final int MIN_ROOM_SIZE = 5;
+	private static AbstractDungeonGenerator dungeonGenerator;
 	public static Dungeon dungeon;
 	public static ImageResource[] floorTiles = new ImageResource[] {
 			new ImageResource("Dungeon/floor/floor_1.png"),
@@ -30,7 +32,9 @@ public class Board {
 			new ImageResource("Dungeon/wall/wall_top_mid.png"),
 	};
 	public static void generateDungeon() {
-		dungeon = new SimpleRandomWalkDungeonGenerator().runProceduralGeneration();
+		dungeonGenerator = new CorridorFirstDungeonGenerator();
+		// dungeon = new SimpleRandomWalkDungeonGenerator().runProceduralGeneration();
+		dungeon = dungeonGenerator.generateDungeon();
 	}
 
 	public static void render(GL2 gl) {

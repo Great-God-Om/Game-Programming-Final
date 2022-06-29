@@ -1,9 +1,11 @@
-package finalgame.world.ProceduralGeneration;
+package finalgame.world.ProceduralGeneration.Generators;
 
 import java.util.HashSet;
 import java.util.Random;
 
 import finalgame.lib.util.Vector2d;
+import finalgame.world.ProceduralGeneration.Dungeon;
+import finalgame.world.ProceduralGeneration.ProceduralGenerationAlgorithms;
 
 public class SimpleRandomWalkDungeonGenerator extends AbstractDungeonGenerator {
 	protected static Vector2d startPosition = new Vector2d(0, 0);

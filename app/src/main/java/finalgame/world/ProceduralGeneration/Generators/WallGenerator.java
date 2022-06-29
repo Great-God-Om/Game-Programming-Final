@@ -1,9 +1,10 @@
-package finalgame.world.ProceduralGeneration;
+package finalgame.world.ProceduralGeneration.Generators;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import finalgame.lib.util.Vector2d;
+import finalgame.world.ProceduralGeneration.util.Direction2D;
 
 public class WallGenerator {
 	public static HashSet<Vector2d> createWalls(HashSet<Vector2d> floorPositions) {

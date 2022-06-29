@@ -1,4 +1,4 @@
-package finalgame.world.ProceduralGeneration;
+package finalgame.world.ProceduralGeneration.util;
 
 import java.util.ArrayList;
 import java.util.List;
