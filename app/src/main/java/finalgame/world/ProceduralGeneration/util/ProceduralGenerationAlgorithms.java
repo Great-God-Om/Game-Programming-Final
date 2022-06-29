@@ -13,17 +13,17 @@ import finalgame.lib.util.Vector2d;
  * ProceduralGenerationAlgorithms
  */
 public class ProceduralGenerationAlgorithms {
-	
-	/** 
+
+	/**
 	 * @param startingPos
 	 * @param walkLength
 	 * @return HashSet<Vector2d>
 	 */
-	public static HashSet<Vector2d> simpleRandomWalk(Vector2d startingPos, int walkLength){
+	public static HashSet<Vector2d> simpleRandomWalk(Vector2d startingPos, int walkLength) {
 		HashSet<Vector2d> path = new HashSet<Vector2d>();
 		path.add(startingPos);
 		Vector2d previousPos = startingPos;
-		for(int i =0; i < walkLength; i++){
+		for (int i = 0; i < walkLength; i++) {
 			Vector2d newPos = Vector2d.add(previousPos, Direction2D.getRandomCardinalDirection());
 			path.add(newPos);
 			previousPos = newPos;
@@ -31,8 +31,7 @@ public class ProceduralGenerationAlgorithms {
 		return path;
 	}
 
-	
-	/** 
+	/**
 	 * @param startingPos
 	 * @param corridorLength
 	 * @return ArrayList<Vector2d>
@@ -55,23 +54,23 @@ public class ProceduralGenerationAlgorithms {
 		Queue<Boundsint> roomsQueue = new LinkedList<Boundsint>();
 		ArrayList<Boundsint> roomsList = new ArrayList<Boundsint>();
 		roomsQueue.add(spaceToSplit);
-		while(!roomsQueue.isEmpty()){
+		while (!roomsQueue.isEmpty()) {
 			var room = roomsQueue.poll();
-			if(room.size.y >=minHeight && room.size.x >= minWidth){
-				if(rand.nextFloat() < 0.5f){
+			if (room.size.y >= minHeight && room.size.x >= minWidth) {
+				if (rand.nextFloat() < 0.5f) {
 					if (room.size.y >= minHeight * 2) {
-						splitHorizontally(minWidth, minHeight, roomsQueue, room);
-					} else if (room.size.x >= minWidth * 2){
-						splitVertically(minWidth, minHeight, roomsQueue, room);
-						
+						splitHorizontally(minWidth, roomsQueue, room);
+					} else if (room.size.x >= minWidth * 2) {
+						splitVertically(minHeight, roomsQueue, room);
+
 					} else {
 						roomsList.add(room);
 					}
 				} else {
 					if (room.size.y >= minHeight * 2) {
-						splitVertically(minWidth, minHeight, roomsQueue, room);
-					} else if (room.size.x >= minWidth * 2){
-						splitHorizontally(minWidth, minHeight, roomsQueue, room);
+						splitVertically(minHeight, roomsQueue, room);
+					} else if (room.size.x >= minWidth * 2) {
+						splitHorizontally(minWidth, roomsQueue, room);
 					} else {
 						roomsList.add(room);
 					}
@@ -81,12 +80,22 @@ public class ProceduralGenerationAlgorithms {
 		return roomsList;
 	}
 
-
-	private static void splitVertically(int minWidth, int minHeight, Queue<Boundsint> roomsQueue, Boundsint room) {
+	private static void splitVertically(int minHeight, Queue<Boundsint> roomsQueue, Boundsint room) {
+		var xSplit = Math.max(1, Math.round(new Random().nextFloat() * room.size.x));
+		Boundsint room1 = new Boundsint(room.min, new Vector2d(xSplit, room.min.y));
+		Boundsint room2 = new Boundsint(new Vector2d(room.min.x + xSplit, room.min.y),
+				new Vector2d(room.size.x - xSplit, room.size.y));
+		roomsQueue.add(room1);
+		roomsQueue.add(room2);
 	}
 
-
-	private static void splitHorizontally(int minWidth, int minHeight, Queue<Boundsint> roomsQueue, Boundsint room) {
+	private static void splitHorizontally(int minWidth, Queue<Boundsint> roomsQueue, Boundsint room) {
+		var ySplit = Math.max(1, Math.round(new Random().nextFloat() * room.size.y));
+		Boundsint room1 = new Boundsint(room.min, new Vector2d(room.size.x, ySplit));
+		Boundsint room2 = new Boundsint(new Vector2d(room.min.x, room.min.y + ySplit),
+				new Vector2d(room.size.x, room.size.y - ySplit));
+		roomsQueue.add(room1);
+		roomsQueue.add(room2);
 	}
-	
+
 }
