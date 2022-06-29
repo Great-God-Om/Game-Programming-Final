@@ -8,10 +8,10 @@ import finalgame.lib.util.Vector2d;
 
 public class Direction2D {
 	public static ArrayList<Vector2d> cardinalDiretionsList = new ArrayList<Vector2d>(
-			List.of(new Vector2d(0, 1),
-					new Vector2d(1, 0),
-					new Vector2d(0, -1),
-					new Vector2d(-1, 0)));
+			List.of(Vector2d.UP, // UP
+					Vector2d.RIGHT, // RIGHT
+					Vector2d.DOWN, // DOWN
+					Vector2d.LEFT)); // LEFT
 
 	
 	/** 

@@ -16,7 +16,12 @@ public class World {
 	public static void init(){
 		Board.generateDungeon();
 		placeEnemies();
-		gameObjects.add(new Player());
+		placePlayer();
+	}
+	private static void placePlayer() {
+		var player = new Player();
+		player.position = Board.dungeon.floorTiles.stream().findFirst().get();
+		gameObjects.add(player);
 	}
 	public static void update() {
 		for (GameObject object : gameObjects) {
