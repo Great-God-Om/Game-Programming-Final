@@ -1,17 +1,21 @@
 package finalgame.world;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.jogamp.opengl.GL2;
 
 import finalgame.world.Controllers.Player;
+import finalgame.world.Controllers.Enemies.Skeleton.Skeleton;
 
 public class World {
 	private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	public static final float TILE_SIZE = 1f;
+	public static final float ENEMY_SPAWN_CHANCE = 0.01f;
 	public static long gameTime = 0;
 	public static void init(){
 		Board.generateDungeon();
+		placeEnemies();
 		gameObjects.add(new Player());
 	}
 	public static void update() {
@@ -20,7 +24,16 @@ public class World {
 		}
 	}
 	
-	
+	public static void placeEnemies(){
+		Random rand = new Random();
+		Board.dungeon.floorTiles.forEach(position -> {
+			if(rand.nextFloat() <= ENEMY_SPAWN_CHANCE){
+				Skeleton skel = new Skeleton();
+				skel.position = position;
+				gameObjects.add(skel);
+			}
+		});
+	}
 	/** 
 	 * @param gl
 	 */

@@ -1,13 +1,9 @@
 package finalgame.world.Controllers;
 
-import com.jogamp.opengl.GL2;
-
 import finalgame.lib.GraphicsEngine.Animation;
 import finalgame.lib.GraphicsEngine.AnimationController;
 import finalgame.lib.GraphicsEngine.AnimationState;
-import finalgame.lib.GraphicsEngine.Drawing;
 import finalgame.lib.Resources.ImageResource;
-import finalgame.lib.util.Vector2d;
 
 class IDLESTATE extends AnimationState {
 	IDLESTATE() {
@@ -35,14 +31,5 @@ public class PlayerAnimationController extends AnimationController {
 
 	public void changeState() {
 
-	}
-
-	/**
-	 * @param gl
-	 * @param pos
-	 */
-	public void render(GL2 gl, Vector2d pos) {
-		currentState.animation.play();
-		Drawing.drawImage(currentState.animation.getImage(), pos.x, pos.y, new float[] { 1, 1, 1 }, gl);
 	}
 }
