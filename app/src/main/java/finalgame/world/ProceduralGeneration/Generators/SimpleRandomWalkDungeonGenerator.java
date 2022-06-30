@@ -5,6 +5,7 @@ import java.util.Random;
 
 import finalgame.lib.util.Vector2d;
 import finalgame.world.ProceduralGeneration.Dungeon;
+import finalgame.world.ProceduralGeneration.Wall;
 import finalgame.world.ProceduralGeneration.util.ProceduralGenerationAlgorithms;
 
 public class SimpleRandomWalkDungeonGenerator extends AbstractDungeonGenerator {
@@ -20,7 +21,7 @@ public class SimpleRandomWalkDungeonGenerator extends AbstractDungeonGenerator {
 	 */
 	public Dungeon runProceduralGeneration() {
 		HashSet<Vector2d> floorPositions = runRandomWalk(iterations, walkLength, startPosition);
-		HashSet<Vector2d> wallPositions = WallGenerator.createWalls(floorPositions);
+		HashSet<Wall> wallPositions = WallGenerator.createWalls(floorPositions);
 		return new Dungeon(floorPositions, wallPositions);
 	}
 

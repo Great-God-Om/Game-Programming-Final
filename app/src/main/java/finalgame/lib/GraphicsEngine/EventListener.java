@@ -15,7 +15,7 @@ public class EventListener implements GLEventListener {
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
-		gl.glClearColor(0, 0, 0, 1);
+		gl.glClearColor(0.145098039216f, 0.0745098039216f, 0.101960784314f, 1);
 		gl.glEnable(GL2.GL_TEXTURE_2D);
 		gl.glEnable(GL2.GL_BLEND);
 		gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
@@ -39,10 +39,8 @@ public class EventListener implements GLEventListener {
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 		gl.glTranslatef(-Camera.position.x, -Camera.position.y, 0);
-		// gl.glScalef(-0.2f, -0.2f, 0);
 		World.render(gl);
 		gl.glTranslatef(Camera.position.x, Camera.position.y, 0);
-		// gl.glScalef(1.02f, 1.02f, 0);
 	}
 
 	

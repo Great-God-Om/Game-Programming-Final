@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import finalgame.lib.util.Vector2d;
 import finalgame.world.ProceduralGeneration.Dungeon;
+import finalgame.world.ProceduralGeneration.Wall;
 import finalgame.world.ProceduralGeneration.util.Direction2D;
 import finalgame.world.ProceduralGeneration.util.ProceduralGenerationAlgorithms;
 
@@ -29,7 +30,7 @@ public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenera
 		// WallTiles
 		HashSet<Vector2d> floorTiles = new HashSet<Vector2d>();
 		HashSet<Vector2d> potentialRoomPositions = new HashSet<Vector2d>();
-		HashSet<Vector2d> wallTiles = new HashSet<Vector2d>();
+		HashSet<Wall> wallTiles = new HashSet<Wall>();
 
 		// Create Corridors and assign them to FloorTiles
 		floorTiles = createCorridiors(floorTiles, potentialRoomPositions);
@@ -58,7 +59,7 @@ public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenera
 		ArrayList<Vector2d> deadEnds = new ArrayList<Vector2d>();
 		for (Vector2d position : floorPositions) {
 			int neighborCount = 0;
-			for (Vector2d direction : Direction2D.cardinalDiretionsList) {
+			for (Vector2d direction : Direction2D.cardinalDirectionsList) {
 				if(floorPositions.contains(Vector2d.add(position, direction))){
 					neighborCount++;
 				}
