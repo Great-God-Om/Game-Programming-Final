@@ -5,5 +5,11 @@ public enum WallTypes {
 	WallSideRight,
 	WallSideLeft,
 	WallBottom,
-	WallFull
+	WallFull,
+	WallInnerCornerDownLeft,
+	WallInnerCornerDownRight,
+	WallDiagonalCornerDownRight,
+	WallDiagonalCornerDownLeft,
+	WallDiagonalCornerUpRight,
+	WallDiagonalCornerUpLeft,
 }

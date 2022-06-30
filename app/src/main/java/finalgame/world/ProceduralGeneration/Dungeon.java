@@ -28,6 +28,12 @@ public class Dungeon {
 			new ImageResource("Dungeon/wall/wall_bottom.png"),
 			new ImageResource("Dungeon/wall/wall_side_left.png"),
 			new ImageResource("Dungeon/wall/wall_full.png"),
+			new ImageResource("Dungeon/wall/wall_inner_corner_down_left.png"),
+			new ImageResource("Dungeon/wall/wall_inner_corner_down_right.png"),
+			new ImageResource("Dungeon/wall/wall_diagonal_corner_down_right.png"),
+			new ImageResource("Dungeon/wall/wall_diagonal_corner_down_left.png"),
+			new ImageResource("Dungeon/wall/wall_diagonal_corner_up_right.png"),
+			new ImageResource("Dungeon/wall/wall_diagonal_corner_up_left.png"),
 	};
 
 	public static ImageResource exit = new ImageResource("Dungeon/floor_ladder.png");
@@ -75,6 +81,37 @@ public class Dungeon {
 							wall.position.y,
 							new float[] { 1, 1, 1 }, gl);
 					break;
+				case WallInnerCornerDownLeft:
+					Drawing.drawImage(wallTilesImages[5], wall.position.x,
+							wall.position.y,
+							new float[] { 1, 1, 1 }, gl);
+					break;
+				case WallInnerCornerDownRight:
+					Drawing.drawImage(wallTilesImages[6], wall.position.x,
+							wall.position.y,
+							new float[] { 1, 1, 1 }, gl);
+					break;
+				case WallDiagonalCornerDownRight:
+					Drawing.drawImage(wallTilesImages[7], wall.position.x,
+							wall.position.y,
+							new float[] { 1, 1, 1 }, gl);
+					break;
+				case WallDiagonalCornerDownLeft:
+					Drawing.drawImage(wallTilesImages[8], wall.position.x,
+							wall.position.y,
+							new float[] { 1, 1, 1 }, gl);
+					break;
+				case WallDiagonalCornerUpRight:
+					Drawing.drawImage(wallTilesImages[9], wall.position.x,
+							wall.position.y,
+							new float[] { 1, 1, 1 }, gl);
+					break;
+				case WallDiagonalCornerUpLeft:
+					Drawing.drawImage(wallTilesImages[10], wall.position.x,
+							wall.position.y,
+							new float[] { 1, 1, 1 }, gl);
+					break;
+
 			}
 		});
 

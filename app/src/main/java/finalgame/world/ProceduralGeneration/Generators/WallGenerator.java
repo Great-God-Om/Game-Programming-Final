@@ -38,6 +38,28 @@ public class WallGenerator {
 					neighborsBinaryType += '0';
 				}
 			}
+			int type = Integer.parseInt(neighborsBinaryType, 2);
+			if (WallTypeHelper.wallInnerCornerDownLeft.contains(type)) {
+				walls.add(new Wall(WallTypes.WallInnerCornerDownLeft, position));
+			} else if (WallTypeHelper.wallInnerCornerDownRight.contains(type)) {
+				walls.add(new Wall(WallTypes.WallInnerCornerDownRight, position));
+			} else if (WallTypeHelper.wallDiagonalCornerDownLeft.contains(type)) {
+				walls.add(new Wall(WallTypes.WallDiagonalCornerDownLeft, position));
+
+			} else if (WallTypeHelper.wallDiagonalCornerDownRight.contains(type)) {
+				walls.add(new Wall(WallTypes.WallDiagonalCornerDownRight, position));
+
+			} else if (WallTypeHelper.wallDiagonalCornerUpRight.contains(type)) {
+				walls.add(new Wall(WallTypes.WallDiagonalCornerUpRight, position));
+
+			} else if (WallTypeHelper.wallDiagonalCornerUpLeft.contains(type)) {
+				walls.add(new Wall(WallTypes.WallDiagonalCornerUpLeft, position));
+
+			} else if (WallTypeHelper.wallFullEightDirections.contains(type)) {
+				walls.add(new Wall(WallTypes.WallFull, position));
+			} else if (WallTypeHelper.wallBottomEightDirections.contains(type)) {
+				walls.add(new Wall(WallTypes.WallBottom, position));
+			}
 		}
 	}
 
