@@ -1,4 +1,4 @@
-package finalgame.world.Controllers;
+package finalgame.world.Controllers.Player;
 
 import finalgame.lib.GraphicsEngine.Animation;
 import finalgame.lib.GraphicsEngine.AnimationController;
@@ -28,8 +28,8 @@ public class PlayerAnimationController extends AnimationController {
 		states[0] = new IDLESTATE();
 		currentState = states[0];
 	}
-
-	public void changeState() {
-
+	@Override
+	public void changeState(AnimationState state) {
+		
 	}
 }

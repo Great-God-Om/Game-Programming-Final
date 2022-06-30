@@ -9,6 +9,8 @@ public class Vector2d {
 	public static final Vector2d DOWN = new Vector2d(0, -1);
 	public static final Vector2d LEFT = new Vector2d(-1, 0);
 	public static final Vector2d RIGHT = new Vector2d(1, 0);
+	public static final Vector2d ZERO = new Vector2d(0, 0);
+
 
 	public Vector2d(float x, float y) {
 		this.x = x;

@@ -11,6 +11,11 @@ import finalgame.lib.Resources.ImageResource;
 import finalgame.lib.util.Vector2d;
 
 public class Dungeon {
+	/*
+	 * TODO: Change these to match other tileset
+	 * WILL NEED TO UPDATE RENDERER WITH
+	 * PRESELECTED FLOOR TILES SO IT ISN'T CHANGING ALL THE TIME
+	 */
 	public static ImageResource[] floorTileImages = new ImageResource[] {
 			new ImageResource("Dungeon/floor/floor_1.png"),
 			new ImageResource("Dungeon/floor/floor_1.png"),
@@ -38,12 +43,15 @@ public class Dungeon {
 
 	public static ImageResource exit = new ImageResource("Dungeon/floor_ladder.png");
 	public HashSet<Vector2d> floorTiles;
-	public HashSet<Wall> wallTiles;
+	public HashSet<Vector2d> wallPositions = new HashSet<Vector2d>();
+	public HashSet<Wall> walls;
+
 	public Vector2d exitPosition;
 
-	public Dungeon(HashSet<Vector2d> floorTiles, HashSet<Wall> wallTiles) {
+	public Dungeon(HashSet<Vector2d> floorTiles, HashSet<Wall> walls) {
 		this.floorTiles = floorTiles;
-		this.wallTiles = wallTiles;
+		this.walls = walls;
+		this.wallPositions.addAll(walls.stream().map(x -> x.position).collect(Collectors.toSet()));
 		exitPosition = floorTiles.stream().collect(Collectors.toList()).get(new Random().nextInt(floorTiles.size()));
 	}
 
@@ -54,7 +62,7 @@ public class Dungeon {
 					new float[] { 1, 1, 1 }, gl);
 		});
 
-		wallTiles.forEach(wall -> {
+		walls.forEach(wall -> {
 			switch (wall.type) {
 				case WallTop:
 					Drawing.drawImage(wallTilesImages[0], wall.position.x,

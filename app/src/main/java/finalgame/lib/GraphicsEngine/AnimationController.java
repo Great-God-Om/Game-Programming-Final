@@ -8,7 +8,7 @@ public abstract class AnimationController {
 	protected AnimationState[] states;
 	protected AnimationState currentState;
 
-	public abstract void changeState();
+	public abstract void changeState(AnimationState state);
 
 	/**
 	 * @param gl

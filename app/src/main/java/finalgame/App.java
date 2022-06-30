@@ -4,8 +4,8 @@
 package finalgame;
 
 import finalgame.lib.Engine.GameLoop;
+import finalgame.lib.Engine.SceneManagement.SceneManager;
 import finalgame.lib.GraphicsEngine.Renderer;
-import finalgame.world.World;
 
 public class App {
 
@@ -14,7 +14,7 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-      World.init();
+      SceneManager.init();
       GameLoop.start();
       Renderer.init();
     }

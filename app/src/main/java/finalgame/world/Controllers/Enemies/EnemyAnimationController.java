@@ -9,9 +9,8 @@ public class EnemyAnimationController extends AnimationController{
 		states = new AnimationState[1];
 	}
 	@Override
-	public void changeState() {
-		// TODO Auto-generated method stub
-		
+	public void changeState(AnimationState state) {
+		this.currentState = state;
 	}
 	
 }

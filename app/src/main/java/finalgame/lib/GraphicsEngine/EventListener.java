@@ -4,7 +4,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 
-import finalgame.world.World;
+import finalgame.lib.Engine.SceneManagement.SceneManager;
 
 public class EventListener implements GLEventListener {
 
@@ -39,7 +39,7 @@ public class EventListener implements GLEventListener {
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 		gl.glTranslatef(-Camera.position.x, -Camera.position.y, 0);
-		World.render(gl);
+		SceneManager.render(gl);
 		gl.glTranslatef(Camera.position.x, Camera.position.y, 0);
 	}
 
