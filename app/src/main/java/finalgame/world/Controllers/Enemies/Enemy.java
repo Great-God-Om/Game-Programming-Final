@@ -3,6 +3,7 @@ package finalgame.world.Controllers.Enemies;
 import java.util.Random;
 
 import finalgame.lib.util.Vector2d;
+import finalgame.world.Board;
 import finalgame.world.GameObject;
 import finalgame.world.World;
 
@@ -58,7 +59,7 @@ public class Enemy extends GameObject {
 				newPosition = Vector2d.add(this.position, Vector2d.DOWN);
 			}
 		}
-		if(World.enemyPositions.containsKey(newPosition)){
+		if(World.enemyPositions.containsKey(newPosition) || Board.dungeon.wallPositions.contains(newPosition)){
 			newPosition = this.position;
 		}
 		return newPosition;
