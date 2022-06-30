@@ -26,7 +26,6 @@ public class Dungeon {
 			new ImageResource("Dungeon/floor/floor_6.png"),
 			new ImageResource("Dungeon/floor/floor_7.png")
 	};
-
 	public static ImageResource[] wallTilesImages = new ImageResource[] {
 			new ImageResource("Dungeon/wall/wall_top.png"),
 			new ImageResource("Dungeon/wall/wall_side_right.png"),
@@ -40,25 +39,55 @@ public class Dungeon {
 			new ImageResource("Dungeon/wall/wall_diagonal_corner_up_right.png"),
 			new ImageResource("Dungeon/wall/wall_diagonal_corner_up_left.png"),
 	};
+	public static ImageResource[] wallDecorations = new ImageResource[] {
+			new ImageResource("Dungeon/decoration/torch.png"),
+			new ImageResource("Dungeon/decoration/banner.png"),
+	};
+	public static ImageResource[] floorDecorations = new ImageResource[] {
+			new ImageResource("Dungeon/decoration/stones_1.png"),
+			new ImageResource("Dungeon/decoration/stones_2.png"),
+			new ImageResource("Dungeon/decoration/bones_1.png"),
+			new ImageResource("Dungeon/decoration/bones_2.png"),
 
+	};
 	public static ImageResource exit = new ImageResource("Dungeon/floor_ladder.png");
-	public HashSet<Vector2d> floorTiles;
+	private final float wallDecorationChance = 0.09f;
+	private final float floorDecorationChance = 0.05f;
+
+	public HashSet<Floor> floors;
 	public HashSet<Vector2d> wallPositions = new HashSet<Vector2d>();
+	public HashSet<Decoration> decorationPositions = new HashSet<Decoration>();
 	public HashSet<Wall> walls;
 
 	public Vector2d exitPosition;
 
 	public Dungeon(HashSet<Vector2d> floorTiles, HashSet<Wall> walls) {
-		this.floorTiles = floorTiles;
+		this.floors = floorTiles.stream().map(tile -> new Floor(floorTileImages[new Random().nextInt(floorTileImages.length)],tile)).collect(Collectors.toCollection(HashSet::new));
 		this.walls = walls;
 		this.wallPositions.addAll(walls.stream().map(x -> x.position).collect(Collectors.toSet()));
+		walls.forEach(wall -> {
+			Random rand = new Random();
+			if (rand.nextFloat() < wallDecorationChance && wall.type == WallTypes.WallTop) {
+				decorationPositions.add(new Decoration(
+						wallDecorations[rand.nextInt(wallDecorations.length)],
+						wall.position));
+			}
+		});
+		floorTiles.forEach(floor -> {
+			Random rand = new Random();
+			if (rand.nextFloat() < floorDecorationChance) {
+				decorationPositions.add(new Decoration(
+						floorDecorations[rand.nextInt(floorDecorations.length)],
+						floor));
+			}
+		});
 		exitPosition = floorTiles.stream().collect(Collectors.toList()).get(new Random().nextInt(floorTiles.size()));
 	}
 
 	public void render(GL2 gl) {
-		floorTiles.forEach(tile -> {
-			Drawing.drawImage(floorTileImages[0], tile.x,
-					tile.y,
+		floors.forEach(floor -> {
+			Drawing.drawImage(floor.imageResource, floor.position.x,
+					floor.position.y,
 					new float[] { 1, 1, 1 }, gl);
 		});
 
@@ -122,7 +151,9 @@ public class Dungeon {
 
 			}
 		});
-
+		decorationPositions.forEach(dec -> {
+			Drawing.drawImage(dec.texture, dec.position.x, dec.position.y, new float[] { 1, 1, 1 }, gl);
+		});
 		Drawing.drawImage(exit, exitPosition.x, exitPosition.y, new float[] { 1, 1, 1 }, gl);
 	}
 }

@@ -7,10 +7,13 @@ import finalgame.world.GameObject;
 import finalgame.world.World;
 
 public class Enemy extends GameObject {
-	public final int sightDistance = 4;
-	private long lastGameTime = World.gameTime;
-	private final int damage = 1;
-	private final float AttackChance = 1f; // TODO: Maybe calculate based on Stats
+	// TODO: ADD MORE ENEMY TYPES TO THE WORLD
+	protected final int maxHealth = 2;
+	protected int health = maxHealth;
+	protected final int sightDistance = 6;
+	protected long lastGameTime = World.gameTime;
+	protected int damage = 1;
+	protected float AttackChance = 1f; // TODO: Maybe calculate based on Stats
 	@Override
 	public void update() {
 		if (World.gameTime > lastGameTime) { // Can only take action on next game round
@@ -34,7 +37,12 @@ public class Enemy extends GameObject {
 			System.out.println("Did damage to Player");
 		}
 	}
-
+	public void damage(int amount){
+		health -= amount;
+		if(health <= 0){
+			World.removeGameObject(this);
+		}
+	}
 	private Vector2d moveToPlayer() {
 		Vector2d newPosition = this.position;
 		if (this.position.x != World.player.position.x) {
@@ -49,6 +57,9 @@ public class Enemy extends GameObject {
 			} else {
 				newPosition = Vector2d.add(this.position, Vector2d.DOWN);
 			}
+		}
+		if(World.enemyPositions.containsKey(newPosition)){
+			newPosition = this.position;
 		}
 		return newPosition;
 	}

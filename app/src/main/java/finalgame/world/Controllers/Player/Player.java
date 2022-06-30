@@ -8,26 +8,30 @@ import finalgame.lib.util.Vector2d;
 import finalgame.world.Board;
 import finalgame.world.GameObject;
 import finalgame.world.World;
+import finalgame.world.ProceduralGeneration.util.Direction2D;
 
 // TODO: Add ability for player to attack
-// TODO: Add Health UI
 public class Player extends GameObject {
 	public int health = 20;
 	public int maxHealth = 20;
-
+	private int damage = 5;
 	public Player() {
 		anim = new PlayerAnimationController();
 	}
 
 	public void update() {
 		move();
+		if(KeyHandler.getKey(KeyEvent.VK_F)){
+			attack();
+		}
 	}
 	public void damage(int amount){
 		health -= amount;
 		if(health <= 0){
 			System.out.println("Player Died");
+			World.removeGameObject(this); // TODO: CAN'T DO THIS WILL EXPLODE FIND ANOTHER WAY
 		}
-		System.out.println(health/maxHealth);
+		
 	}
 	// TODO: MAKE IT TO WHERE THE PLAYER CAN'T STAND ON TOP OF ENEMIES
 	private void move(){
@@ -45,7 +49,7 @@ public class Player extends GameObject {
 		if ((!KeyHandler.getKey(KeyEvent.VK_W) && !KeyHandler.getKey(KeyEvent.VK_D) && !KeyHandler.getKey(KeyEvent.VK_S)
 				&& !KeyHandler.getKey(KeyEvent.VK_A)) && !this.velocity.equals(Vector2d.ZERO)) {
 			var newPosition = Vector2d.add(position, velocity);
-			if (!Board.dungeon.wallPositions.contains(newPosition)) {
+			if (!Board.dungeon.wallPositions.contains(newPosition) && !World.enemyPositions.containsKey(newPosition)) {
 				this.position = Vector2d.add(position, velocity);
 				World.gameTime++;
 			}
@@ -53,5 +57,13 @@ public class Player extends GameObject {
 		}
 		Camera.moveCameraToPosition(this.position.x, this.position.y);
 	}
-
+	private void attack(){
+		for (var direction : Direction2D.eightDirectionsList) {
+			var pos = Vector2d.add(position, direction);
+			if(World.enemyPositions.containsKey(pos)){
+				World.enemyPositions.get(pos).damage(damage);
+				break;
+			}
+		}
+	}
 }
