@@ -40,7 +40,31 @@ public class Drawing {
 		gl.glFlush();
 		gl.glBindTexture(GL2.GL_TEXTURE_2D, 0);
 	}
+	public static void drawImage(ImageResource image, float x, float y, float width, float height, float[] tint, GL2 gl) {
+		Texture texture = image.getTexture();
 
+		if (texture != null) {
+			gl.glBindTexture(GL2.GL_TEXTURE_2D, texture.getTextureObject());
+		}
+		gl.glColor3fv(tint, 0);
+		gl.glBegin(GL2.GL_QUADS);
+
+		gl.glTexCoord2f(0, 1);
+		gl.glVertex2f(x, y);
+
+		gl.glTexCoord2f(1, 1);
+		gl.glVertex2f(x + width, y);
+
+		gl.glTexCoord2f(1, 0);
+		gl.glVertex2f(x + width, y + height);
+
+		gl.glTexCoord2f(0, 0);
+		gl.glVertex2f(x, y + height);
+
+		gl.glEnd();
+		gl.glFlush();
+		gl.glBindTexture(GL2.GL_TEXTURE_2D, 0);
+	}
 	
 	/** 
 	 * @param x

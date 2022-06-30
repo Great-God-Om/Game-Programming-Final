@@ -6,8 +6,10 @@ import java.util.Random;
 import com.jogamp.opengl.GL2;
 
 import finalgame.lib.Engine.SceneManagement.Scene;
+import finalgame.lib.Engine.UIManagement.UIController;
 import finalgame.world.Controllers.Enemies.Skeleton.Skeleton;
 import finalgame.world.Controllers.Player.Player;
+import finalgame.world.UIElements.PlayerHealth;
 
 public class World extends Scene {
 	private static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -18,8 +20,13 @@ public class World extends Scene {
 
 	public void init() {
 		Board.generateDungeon();
+		constructUIElements(); // TODO: PROBABLY MOVE THIS SOMEWHERE ELSE
 		placeEnemies();
 		placePlayer();
+	}
+
+	private void constructUIElements() {
+		UIController.uiElementsToRender.add(new PlayerHealth());
 	}
 
 	private static void placePlayer() {
@@ -53,5 +60,6 @@ public class World extends Scene {
 		for (GameObject gameObject : gameObjects) {
 			gameObject.render(gl);
 		}
+		UIController.render(gl);
 	}
 }

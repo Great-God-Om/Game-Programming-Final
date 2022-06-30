@@ -13,6 +13,8 @@ import finalgame.world.World;
 // TODO: Add Health UI
 public class Player extends GameObject {
 	public int health = 20;
+	public int maxHealth = 20;
+
 	public Player() {
 		anim = new PlayerAnimationController();
 	}
@@ -25,6 +27,7 @@ public class Player extends GameObject {
 		if(health <= 0){
 			System.out.println("Player Died");
 		}
+		System.out.println(health/maxHealth);
 	}
 	// TODO: MAKE IT TO WHERE THE PLAYER CAN'T STAND ON TOP OF ENEMIES
 	private void move(){

@@ -8,7 +8,8 @@ import finalgame.lib.Input.KeyHandler;
 import finalgame.lib.Input.MouseHandler;
 
 public class Renderer {
-    public static int w_units = 20;
+    public static int w_units = 15;
+    public static int h_units = 0;
     public static GLWindow window = null;
     public static GLProfile glp;
     public static void init() {
