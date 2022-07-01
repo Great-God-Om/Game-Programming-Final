@@ -2,19 +2,21 @@ package finalgame.world.Controllers.Player;
 
 import com.jogamp.newt.event.KeyEvent;
 
+import finalgame.lib.Engine.SceneManagement.SceneManager;
 import finalgame.lib.GraphicsEngine.Camera;
 import finalgame.lib.Input.KeyHandler;
 import finalgame.lib.util.Vector2d;
 import finalgame.world.Board;
 import finalgame.world.GameObject;
-import finalgame.world.World;
 import finalgame.world.ProceduralGeneration.util.Direction2D;
+import finalgame.world.Scenes.GameOver;
+import finalgame.world.Scenes.World;
 
-// TODO: Add ability for player to attack
 public class Player extends GameObject {
 	public int health = 20;
 	public int maxHealth = 20;
 	private int damage = 5;
+	private final float playerAttackChance = 0.7f;
 	public Player() {
 		anim = new PlayerAnimationController();
 	}
@@ -29,11 +31,11 @@ public class Player extends GameObject {
 		health -= amount;
 		if(health <= 0){
 			System.out.println("Player Died");
-			World.removeGameObject(this); // TODO: CAN'T DO THIS WILL EXPLODE FIND ANOTHER WAY
+			World.removeGameObject(this);
+			SceneManager.changeScene(new GameOver());
 		}
 		
 	}
-	// TODO: MAKE IT TO WHERE THE PLAYER CAN'T STAND ON TOP OF ENEMIES
 	private void move(){
 		float vertical = this.velocity.y, horizontal = this.velocity.x;
 		if (KeyHandler.getKey(KeyEvent.VK_W)) {

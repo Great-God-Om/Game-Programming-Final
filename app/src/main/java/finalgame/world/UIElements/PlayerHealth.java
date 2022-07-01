@@ -8,7 +8,7 @@ import finalgame.lib.GraphicsEngine.Drawing;
 import finalgame.lib.GraphicsEngine.Renderer;
 import finalgame.lib.Resources.ImageResource;
 import finalgame.lib.util.Vector2d;
-import finalgame.world.World;
+import finalgame.world.Scenes.World;
 
 public class PlayerHealth extends UIElement {
 	private float scaleFactor = 13f;

@@ -11,11 +11,6 @@ import finalgame.lib.Resources.ImageResource;
 import finalgame.lib.util.Vector2d;
 
 public class Dungeon {
-	/*
-	 * TODO: Change these to match other tileset
-	 * WILL NEED TO UPDATE RENDERER WITH
-	 * PRESELECTED FLOOR TILES SO IT ISN'T CHANGING ALL THE TIME
-	 */
 	public static ImageResource[] floorTileImages = new ImageResource[] {
 			new ImageResource("Dungeon/floor/floor_1.png"),
 			new ImageResource("Dungeon/floor/floor_1.png"),

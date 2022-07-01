@@ -1,4 +1,4 @@
-package finalgame.world;
+package finalgame.world.Scenes;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -9,6 +9,8 @@ import com.jogamp.opengl.GL2;
 import finalgame.lib.Engine.SceneManagement.Scene;
 import finalgame.lib.Engine.UIManagement.UIController;
 import finalgame.lib.util.Vector2d;
+import finalgame.world.Board;
+import finalgame.world.GameObject;
 import finalgame.world.Controllers.Enemies.Enemy;
 import finalgame.world.Controllers.Enemies.Skeleton.Skeleton;
 import finalgame.world.Controllers.Enemies.Vampire.Vampire;

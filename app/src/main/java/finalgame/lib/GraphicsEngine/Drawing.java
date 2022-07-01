@@ -4,7 +4,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.texture.Texture;
 
 import finalgame.lib.Resources.ImageResource;
-import finalgame.world.World;
+import finalgame.world.Scenes.World;
 
 public class Drawing {
 	

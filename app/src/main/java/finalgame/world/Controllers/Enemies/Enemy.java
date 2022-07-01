@@ -5,7 +5,7 @@ import java.util.Random;
 import finalgame.lib.util.Vector2d;
 import finalgame.world.Board;
 import finalgame.world.GameObject;
-import finalgame.world.World;
+import finalgame.world.Scenes.World;
 
 public class Enemy extends GameObject {
 	// TODO: ADD MORE ENEMY TYPES TO THE WORLD

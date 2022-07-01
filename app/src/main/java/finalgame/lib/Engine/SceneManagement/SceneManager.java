@@ -2,7 +2,7 @@ package finalgame.lib.Engine.SceneManagement;
 
 import com.jogamp.opengl.GL2;
 
-import finalgame.world.World;
+import finalgame.world.Scenes.World;
 
 /**
  * SceneManageger

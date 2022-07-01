@@ -2,7 +2,7 @@ package finalgame.lib.Engine;
 
 import finalgame.lib.Engine.SceneManagement.SceneManager;
 import finalgame.lib.GraphicsEngine.Renderer;
-import finalgame.world.World;
+import finalgame.world.Scenes.World;
 
 public class GameLoop {
 	private static boolean running = false;
