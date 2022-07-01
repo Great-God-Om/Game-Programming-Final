@@ -12,10 +12,6 @@ class IDLESTATE extends AnimationState {
 				new ImageResource("Player/Idle/player_idle_2.png"),
 				new ImageResource("Player/Idle/player_idle_3.png"),
 				new ImageResource("Player/Idle/player_idle_4.png"),
-				new ImageResource("Player/Idle/player_idle_5.png"),
-				new ImageResource("Player/Idle/player_idle_6.png"),
-				new ImageResource("Player/Idle/player_idle_7.png"),
-				new ImageResource("Player/Idle/player_idle_8.png"),
 		}, true);
 		this.animation.rate = 20;
 	}

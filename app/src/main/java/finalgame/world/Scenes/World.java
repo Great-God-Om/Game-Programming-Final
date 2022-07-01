@@ -23,7 +23,7 @@ public class World extends Scene {
 	private static CopyOnWriteArraySet<GameObject> gameObjects = new CopyOnWriteArraySet<GameObject>();
 	public static final float TILE_SIZE = 1f;
 	public static final float ENEMY_SPAWN_CHANCE = 0.03f;
-	public static final float ITEM_SPAWN_CHANCE = 0.005f;
+	public static final float ITEM_SPAWN_CHANCE = 0.007f;
 	public static long gameTime = 0;
 	public static long level = 1;
 	public static Player player;
