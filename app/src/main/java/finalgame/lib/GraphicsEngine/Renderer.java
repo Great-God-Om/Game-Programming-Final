@@ -27,7 +27,7 @@ public class Renderer {
         // Window Configuration
         window.setSize(360, 420);
         window.setTitle("TITLE");
-        // window.setFullscreen(true);
+        window.setFullscreen(true);
         window.setVisible(true);
         window.requestFocus();
     }
