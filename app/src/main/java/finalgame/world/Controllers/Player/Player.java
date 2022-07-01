@@ -1,5 +1,7 @@
 package finalgame.world.Controllers.Player;
 
+import java.util.Random;
+
 import com.jogamp.newt.event.KeyEvent;
 
 import finalgame.lib.Engine.SceneManagement.SceneManager;
@@ -13,8 +15,8 @@ import finalgame.world.Scenes.GameOver;
 import finalgame.world.Scenes.World;
 
 public class Player extends GameObject {
-	public int health = 1;
 	public int maxHealth = 20;
+	public int health = maxHealth;
 	private int damage = 5;
 	private final float playerAttackChance = 0.7f;
 	public Player() {
@@ -30,7 +32,7 @@ public class Player extends GameObject {
 	public void damage(int amount){
 		health -= amount;
 		if(health <= 0){
-			System.out.println("Player Died");
+			System.out.println("Player Died\n You got to level: " + World.level);
 			World.removeGameObject(this);
 			SceneManager.changeScene(new GameOver());
 		}
@@ -62,10 +64,18 @@ public class Player extends GameObject {
 	private void attack(){
 		for (var direction : Direction2D.eightDirectionsList) {
 			var pos = Vector2d.add(position, direction);
-			if(World.enemyPositions.containsKey(pos)){
+			if(World.enemyPositions.containsKey(pos) && new Random().nextFloat() < playerAttackChance){
 				World.enemyPositions.get(pos).damage(damage);
+				System.out.println("Player did Damage");
 				break;
 			}
+		}
+	}
+
+	public void heal(int amount) {
+		this.health += amount;
+		if(this.health > maxHealth){
+			this.health = maxHealth;
 		}
 	}
 }

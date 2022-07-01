@@ -15,22 +15,25 @@ import finalgame.world.Controllers.Enemies.Enemy;
 import finalgame.world.Controllers.Enemies.Skeleton.Skeleton;
 import finalgame.world.Controllers.Enemies.Vampire.Vampire;
 import finalgame.world.Controllers.Player.Player;
+import finalgame.world.Items.HealthPotion;
+import finalgame.world.Items.Item;
 import finalgame.world.UIElements.PlayerHealth;
 
 public class World extends Scene {
 	private static CopyOnWriteArraySet<GameObject> gameObjects = new CopyOnWriteArraySet<GameObject>();
 	public static final float TILE_SIZE = 1f;
 	public static final float ENEMY_SPAWN_CHANCE = 0.03f;
+	public static final float ITEM_SPAWN_CHANCE = 0.005f;
 	public static long gameTime = 0;
+	public static long level = 1;
 	public static Player player;
-	public static HashMap<Vector2d, Enemy> enemyPositions = new HashMap<Vector2d, Enemy>(); // TODO: Might be a better way
-
+	public static HashMap<Vector2d, Enemy> enemyPositions = new HashMap<Vector2d, Enemy>(); // TODO: Might be a better
+																							// way
+	public static HashMap<Vector2d, Item> items = new HashMap<Vector2d, Item>();
 	public void init() {
 		// TODO: ADD MORE ITEMS TO THE WORLD
-		Board.generateDungeon();
 		constructUIElements(); // TODO: PROBABLY MOVE THIS SOMEWHERE ELSE
-		placeEnemies();
-		placePlayer();
+		makeNewLevel();
 	}
 
 	private void constructUIElements() {
@@ -45,26 +48,43 @@ public class World extends Scene {
 
 	public static void update() {
 		for (GameObject object : gameObjects) {
-			if(object instanceof Enemy) {
+			if (object instanceof Enemy) {
 				enemyPositions.remove(object.position);
 				object.update();
-				enemyPositions.put(object.position, (Enemy)object);
-			}
-			else {
+				enemyPositions.put(object.position, (Enemy) object);
+			} else {
 				object.update();
 			}
 		}
-		if(player.position.equals(Board.dungeon.exitPosition)){
+		if (player.position.equals(Board.dungeon.exitPosition)) {
 			makeNewLevel();
+		}
+		if(items.containsKey(player.position)){
+			items.get(player.position).performEffect();
+			items.remove(player.position);
 		}
 	}
 
 	private static void makeNewLevel() {
 		gameObjects.clear();
 		enemyPositions.clear();
+		items.clear();
 		Board.generateDungeon();
 		placeEnemies();
 		placePlayer();
+		placeItems();
+		level++;
+	}
+
+	private static void placeItems() {
+		Random rand = new Random();
+		Board.dungeon.floors.forEach(floor -> {
+			if(rand.nextFloat() < ITEM_SPAWN_CHANCE){
+				Item item = new HealthPotion(); // TODO: WILL CHANGE WHEN MORE ITEMS EXISTS
+				item.position = floor.position;
+				items.put(floor.position, item);
+			}
+		});
 	}
 
 	public static void placeEnemies() {
@@ -72,7 +92,7 @@ public class World extends Scene {
 		Board.dungeon.floors.forEach(floor -> {
 			if (rand.nextFloat() <= ENEMY_SPAWN_CHANCE) {
 				Enemy enemy;
-				if(rand.nextFloat() < 0.5f){
+				if (rand.nextFloat() < 0.5f) { // TODO: WILL IMPLEMENT ENEMY SPAWN CHANCE WHEN MORE ENEMIES EXIST
 					enemy = new Skeleton();
 				} else {
 					enemy = new Vampire();
@@ -91,11 +111,14 @@ public class World extends Scene {
 		for (GameObject gameObject : gameObjects) {
 			gameObject.render(gl);
 		}
+		for(Item item : items.values()){
+			item.render(gl);
+		}
 		UIController.render(gl);
 	}
 
-	public static void removeGameObject(GameObject go){
-		if(go instanceof Enemy){
+	public static void removeGameObject(GameObject go) {
+		if (go instanceof Enemy) {
 			enemyPositions.remove(go.position);
 		}
 		gameObjects.remove(go);
