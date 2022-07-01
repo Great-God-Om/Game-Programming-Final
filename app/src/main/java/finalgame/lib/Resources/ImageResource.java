@@ -1,43 +1,43 @@
 package finalgame.lib.Resources;
+
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
 
+import finalgame.App;
 import finalgame.lib.GraphicsEngine.Renderer;
 
 public class ImageResource {
 	private Texture texture = null;
 	private BufferedImage image = null;
 
-	public ImageResource(String path){
-		Path p = Paths.get(Paths.get(".").normalize().toAbsolutePath().toString(), "app", "src", "main", "resources", path);
+	public ImageResource(String path) {
+
 		try {
-			image = ImageIO.read(new File(p.toString()));
+			// image = ImageIO.read(new File(p.toString()));
+			var url = App.class.getClassLoader().getResource(path);
+			image = ImageIO.read(url);
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
-		if(image != null){
+		if (image != null) {
 			image.flush();
 		}
 	}
 
-	
-	/** 
+	/**
 	 * @return Texture
 	 */
-	public Texture getTexture(){
-		if(image == null){
+	public Texture getTexture() {
+		if (image == null) {
 			return null;
 		}
-		if(texture == null){
+		if (texture == null) {
 			texture = AWTTextureIO.newTexture(Renderer.glp, image, true);
 		}
 		return texture;
