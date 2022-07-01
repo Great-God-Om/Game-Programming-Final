@@ -38,12 +38,20 @@ public class Enemy extends GameObject {
 			System.out.println("Did damage to Player");
 		}
 	}
+	
+	/** 
+	 * @param amount
+	 */
 	public void damage(int amount){
 		health -= amount;
 		if(health <= 0){
 			World.removeGameObject(this);
 		}
 	}
+	
+	/** 
+	 * @return Vector2d
+	 */
 	private Vector2d moveToPlayer() {
 		Vector2d newPosition = this.position;
 		if (this.position.x != World.player.position.x) {

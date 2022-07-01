@@ -40,6 +40,16 @@ public class Drawing {
 		gl.glFlush();
 		gl.glBindTexture(GL2.GL_TEXTURE_2D, 0);
 	}
+	
+	/** 
+	 * @param image
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param tint
+	 * @param gl
+	 */
 	public static void drawImage(ImageResource image, float x, float y, float width, float height, float[] tint, GL2 gl) {
 		Texture texture = image.getTexture();
 

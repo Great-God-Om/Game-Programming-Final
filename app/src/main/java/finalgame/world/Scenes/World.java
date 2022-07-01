@@ -27,9 +27,12 @@ public class World extends Scene {
 	public static long gameTime = 0;
 	public static long level = 1;
 	public static Player player;
-	public static HashMap<Vector2d, Enemy> enemyPositions = new HashMap<Vector2d, Enemy>(); // TODO: Might be a better
-																							// way
+	public static HashMap<Vector2d, Enemy> enemyPositions = new HashMap<Vector2d, Enemy>(); /*
+																							 * TODO: Might be a better
+																							 * Way TO DO THIS
+																							 */
 	public static HashMap<Vector2d, Item> items = new HashMap<Vector2d, Item>();
+
 	public void init() {
 		// TODO: ADD MORE ITEMS TO THE WORLD
 		constructUIElements(); // TODO: PROBABLY MOVE THIS SOMEWHERE ELSE
@@ -59,7 +62,7 @@ public class World extends Scene {
 		if (player.position.equals(Board.dungeon.exitPosition)) {
 			makeNewLevel();
 		}
-		if(items.containsKey(player.position)){
+		if (items.containsKey(player.position)) {
 			items.get(player.position).performEffect();
 			items.remove(player.position);
 		}
@@ -79,7 +82,7 @@ public class World extends Scene {
 	private static void placeItems() {
 		Random rand = new Random();
 		Board.dungeon.floors.forEach(floor -> {
-			if(rand.nextFloat() < ITEM_SPAWN_CHANCE){
+			if (rand.nextFloat() < ITEM_SPAWN_CHANCE) {
 				Item item = new HealthPotion(); // TODO: WILL CHANGE WHEN MORE ITEMS EXISTS
 				item.position = floor.position;
 				items.put(floor.position, item);
@@ -111,12 +114,16 @@ public class World extends Scene {
 		for (GameObject gameObject : gameObjects) {
 			gameObject.render(gl);
 		}
-		for(Item item : items.values()){
+		for (Item item : items.values()) {
 			item.render(gl);
 		}
 		UIController.render(gl);
 	}
 
+	
+	/** 
+	 * @param go
+	 */
 	public static void removeGameObject(GameObject go) {
 		if (go instanceof Enemy) {
 			enemyPositions.remove(go.position);

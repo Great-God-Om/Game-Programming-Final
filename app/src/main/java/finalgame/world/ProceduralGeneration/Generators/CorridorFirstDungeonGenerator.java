@@ -46,6 +46,11 @@ public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenera
 		return new Dungeon(floorTiles, wallTiles);
 	}
 
+	
+	/** 
+	 * @param deadEnds
+	 * @param roomFloors
+	 */
 	private void createRoomsAtDeadEnd(ArrayList<Vector2d> deadEnds, HashSet<Vector2d> roomFloors) {
 		for (Vector2d position : deadEnds) {
 			if(roomFloors.contains(position) == false){
@@ -55,6 +60,11 @@ public class CorridorFirstDungeonGenerator extends SimpleRandomWalkDungeonGenera
 		}
 	}
 
+	
+	/** 
+	 * @param floorPositions
+	 * @return ArrayList<Vector2d>
+	 */
 	private ArrayList<Vector2d> findAllDeadEnds(HashSet<Vector2d> floorPositions) {
 		ArrayList<Vector2d> deadEnds = new ArrayList<Vector2d>();
 		for (Vector2d position : floorPositions) {

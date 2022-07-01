@@ -29,6 +29,10 @@ public class Player extends GameObject {
 			attack();
 		}
 	}
+	
+	/** 
+	 * @param amount
+	 */
 	public void damage(int amount){
 		health -= amount;
 		if(health <= 0){
@@ -72,6 +76,10 @@ public class Player extends GameObject {
 		}
 	}
 
+	
+	/** 
+	 * @param amount
+	 */
 	public void heal(int amount) {
 		this.health += amount;
 		if(this.health > maxHealth){

@@ -49,6 +49,13 @@ public class ProceduralGenerationAlgorithms {
 		return corridor;
 	}
 
+	
+	/** 
+	 * @param spaceToSplit
+	 * @param minWidth
+	 * @param minHeight
+	 * @return ArrayList<Boundsint>
+	 */
 	public static ArrayList<Boundsint> binarySpacePartioning(Boundsint spaceToSplit, int minWidth, int minHeight) {
 		Random rand = new Random();
 		Queue<Boundsint> roomsQueue = new LinkedList<Boundsint>();
@@ -79,6 +86,12 @@ public class ProceduralGenerationAlgorithms {
 		return roomsList;
 	}
 
+	
+	/** 
+	 * @param minWidth
+	 * @param roomsQueue
+	 * @param room
+	 */
 	private static void splitVertically(int minWidth, Queue<Boundsint> roomsQueue, Boundsint room) {
 		var xSplit = Math.max(1, Math.round(new Random().nextFloat() * room.size.x));
 		Boundsint room1 = new Boundsint(room.min, new Vector2d(xSplit, room.size.y));
@@ -88,6 +101,12 @@ public class ProceduralGenerationAlgorithms {
 		roomsQueue.add(room2);
 	}
 
+	
+	/** 
+	 * @param minHeight
+	 * @param roomsQueue
+	 * @param room
+	 */
 	private static void splitHorizontally(int minHeight, Queue<Boundsint> roomsQueue, Boundsint room) {
 		var ySplit = Math.max(1, Math.round(new Random().nextFloat() * room.size.y));
 		Boundsint room1 = new Boundsint(room.min, new Vector2d(room.size.x, ySplit));

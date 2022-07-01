@@ -16,10 +16,18 @@ public class SceneManager {
 		currentScene = startScene;
 		currentScene.init();
 	}
+	
+	/** 
+	 * @param scene
+	 */
 	public static void changeScene(Scene scene){
 		currentScene = scene;
 		Camera.moveCameraToPosition(0, 0);
 	}
+	
+	/** 
+	 * @param gl
+	 */
 	public static void render(GL2 gl) {
 		currentScene.render(gl);
 	}

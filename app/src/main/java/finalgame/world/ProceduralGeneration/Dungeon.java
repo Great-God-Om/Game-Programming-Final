@@ -79,6 +79,10 @@ public class Dungeon {
 		exitPosition = floorTiles.stream().collect(Collectors.toList()).get(new Random().nextInt(floorTiles.size()));
 	}
 
+	
+	/** 
+	 * @param gl
+	 */
 	public void render(GL2 gl) {
 		floors.forEach(floor -> {
 			Drawing.drawImage(floor.imageResource, floor.position.x,

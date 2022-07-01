@@ -26,6 +26,12 @@ public class WallGenerator {
 		return walls;
 	}
 
+	
+	/** 
+	 * @param floorPositions
+	 * @param cornerWallPositions
+	 * @param walls
+	 */
 	private static void createCornerWalls(HashSet<Vector2d> floorPositions, HashSet<Vector2d> cornerWallPositions,
 			HashSet<Wall> walls) {
 		for (var position : cornerWallPositions) {
@@ -63,6 +69,12 @@ public class WallGenerator {
 		}
 	}
 
+	
+	/** 
+	 * @param floorPositions
+	 * @param basicWallPositions
+	 * @param walls
+	 */
 	private static void createBasicWalls(HashSet<Vector2d> floorPositions, HashSet<Vector2d> basicWallPositions,
 			HashSet<Wall> walls) {
 		for (var position : basicWallPositions) {

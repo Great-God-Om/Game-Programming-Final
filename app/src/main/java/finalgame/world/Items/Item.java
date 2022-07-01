@@ -12,6 +12,10 @@ public abstract class Item {
 
 	public abstract void performEffect();
 
+	
+	/** 
+	 * @param gl
+	 */
 	public void render(GL2 gl) {
 		Drawing.drawImage(texture, position.x, position.y, new float[] { 1, 1, 1 }, gl);
 	}

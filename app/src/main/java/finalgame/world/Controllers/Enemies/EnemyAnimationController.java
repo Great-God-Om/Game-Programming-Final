@@ -8,6 +8,10 @@ public class EnemyAnimationController extends AnimationController{
 	public EnemyAnimationController(){
 		states = new AnimationState[1];
 	}
+	
+	/** 
+	 * @param state
+	 */
 	@Override
 	public void changeState(AnimationState state) {
 		this.currentState = state;

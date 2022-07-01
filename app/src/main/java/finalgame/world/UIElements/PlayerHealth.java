@@ -23,6 +23,10 @@ public class PlayerHealth extends UIElement {
 
 	};
 
+	
+	/** 
+	 * @param gl
+	 */
 	@Override
 	public void render(GL2 gl) {
 		position = new Vector2d(-Renderer.w_units + padding, Renderer.h_units - container_height - padding);

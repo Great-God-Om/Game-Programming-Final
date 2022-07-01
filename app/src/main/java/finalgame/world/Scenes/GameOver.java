@@ -10,6 +10,10 @@ import finalgame.lib.Resources.ImageResource;
 
 public class GameOver extends Scene{
 
+	
+	/** 
+	 * @param gl
+	 */
 	@Override
 	public void render(GL2 gl) {
 		Drawing.drawImage(new ImageResource("game_over.jpg"), -Renderer.w_units + Camera.position.x, -Renderer.h_units + Camera.position.y, Renderer.w_units * 2, Renderer.h_units * 2, new float[]{1,1,1}, gl);

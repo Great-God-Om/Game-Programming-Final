@@ -16,16 +16,28 @@ public class RoomsFirstDungeonGenerator extends SimpleRandomWalkDungeonGenerator
 	private int offset = 2;
 	private boolean randomWalkRooms = true;
 
+	
+	/** 
+	 * @return Dungeon
+	 */
 	@Override
 	public Dungeon runProceduralGeneration() {
 		return roomFirstGeneration();
 	}
 
+	
+	/** 
+	 * @return Dungeon
+	 */
 	private Dungeon roomFirstGeneration() {
 		var rooms = createRooms();
 		return new Dungeon(rooms, WallGenerator.createWalls(rooms));
 	}
 
+	
+	/** 
+	 * @return HashSet<Vector2d>
+	 */
 	private HashSet<Vector2d> createRooms() {
 		var roomsList = ProceduralGenerationAlgorithms.binarySpacePartioning(
 				new Boundsint(startPosition,
@@ -48,6 +60,11 @@ public class RoomsFirstDungeonGenerator extends SimpleRandomWalkDungeonGenerator
 		return floor;
 	}
 
+	
+	/** 
+	 * @param roomsList
+	 * @return HashSet<Vector2d>
+	 */
 	private HashSet<Vector2d> createRoomsRandomly(ArrayList<Boundsint> roomsList) {
 		HashSet<Vector2d> floor = new HashSet<Vector2d>();
 		for (int i = 0; i < roomsList.size(); i++) {
@@ -64,6 +81,11 @@ public class RoomsFirstDungeonGenerator extends SimpleRandomWalkDungeonGenerator
 		return floor;
 	}
 
+	
+	/** 
+	 * @param roomCenters
+	 * @return HashSet<Vector2d>
+	 */
 	private HashSet<Vector2d> connectRooms(ArrayList<Vector2d> roomCenters) {
 		HashSet<Vector2d> corridors = new HashSet<>();
 		var currentRoomCenter = roomCenters.stream().collect(Collectors.toList())
@@ -79,6 +101,12 @@ public class RoomsFirstDungeonGenerator extends SimpleRandomWalkDungeonGenerator
 		return corridors;
 	}
 
+	
+	/** 
+	 * @param currentRoomCenter
+	 * @param destination
+	 * @return HashSet<Vector2d>
+	 */
 	private HashSet<Vector2d> createCorridor(Vector2d currentRoomCenter, Vector2d destination) {
 		HashSet<Vector2d> corridor = new HashSet<Vector2d>();
 		var position = currentRoomCenter;
@@ -102,12 +130,23 @@ public class RoomsFirstDungeonGenerator extends SimpleRandomWalkDungeonGenerator
 		return corridor;
 	}
 
+	
+	/** 
+	 * @param currentRoomCenter
+	 * @param roomCenters
+	 * @return Vector2d
+	 */
 	private Vector2d findClosestPointTo(Vector2d currentRoomCenter, ArrayList<Vector2d> roomCenters) {
 		return roomCenters.stream().reduce((v1, v2) -> {
 			return (Vector2d.distance(currentRoomCenter, v1) < Vector2d.distance(currentRoomCenter, v2)) ? v1 : v2;
 		}).get();
 	}
 
+	
+	/** 
+	 * @param roomList
+	 * @return HashSet<Vector2d>
+	 */
 	private HashSet<Vector2d> createSimpleRooms(ArrayList<Boundsint> roomList) {
 		HashSet<Vector2d> floor = new HashSet<Vector2d>();
 		for (var room : roomList) {
