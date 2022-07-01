@@ -54,6 +54,17 @@ public class World extends Scene {
 				object.update();
 			}
 		}
+		if(player.position.equals(Board.dungeon.exitPosition)){
+			makeNewLevel();
+		}
+	}
+
+	private static void makeNewLevel() {
+		gameObjects.clear();
+		enemyPositions.clear();
+		Board.generateDungeon();
+		placeEnemies();
+		placePlayer();
 	}
 
 	public static void placeEnemies() {

@@ -2,6 +2,7 @@ package finalgame.lib.Engine.SceneManagement;
 
 import com.jogamp.opengl.GL2;
 
+import finalgame.lib.GraphicsEngine.Camera;
 import finalgame.world.Scenes.World;
 
 /**
@@ -17,6 +18,7 @@ public class SceneManager {
 	}
 	public static void changeScene(Scene scene){
 		currentScene = scene;
+		Camera.moveCameraToPosition(0, 0);
 	}
 	public static void render(GL2 gl) {
 		currentScene.render(gl);

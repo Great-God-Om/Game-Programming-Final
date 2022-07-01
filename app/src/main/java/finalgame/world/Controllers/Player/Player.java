@@ -13,7 +13,7 @@ import finalgame.world.Scenes.GameOver;
 import finalgame.world.Scenes.World;
 
 public class Player extends GameObject {
-	public int health = 20;
+	public int health = 1;
 	public int maxHealth = 20;
 	private int damage = 5;
 	private final float playerAttackChance = 0.7f;
