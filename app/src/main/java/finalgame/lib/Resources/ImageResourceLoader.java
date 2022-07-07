@@ -11,14 +11,11 @@ import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
 import finalgame.App;
 import finalgame.lib.GraphicsEngine.Renderer;
 
-public class ImageResource {
-	private Texture texture = null;
-	private BufferedImage image = null;
-
-	public ImageResource(String path) {
+public class ImageResourceLoader {
+	public static BufferedImage loadImage(String path) {
+		BufferedImage image = null;
 
 		try {
-			// image = ImageIO.read(new File(p.toString()));
 			var url = App.class.getClassLoader().getResource(path);
 			image = ImageIO.read(url);
 		} catch (IOException e) {
@@ -28,18 +25,14 @@ public class ImageResource {
 		if (image != null) {
 			image.flush();
 		}
+		return image;
 	}
 
 	/**
 	 * @return Texture
 	 */
-	public Texture getTexture() {
-		if (image == null) {
-			return null;
-		}
-		if (texture == null) {
-			texture = AWTTextureIO.newTexture(Renderer.glp, image, true);
-		}
-		return texture;
+	public static Texture getTextureFromImage(BufferedImage image) {
+
+		return AWTTextureIO.newTexture(Renderer.glp, image, true);
 	}
 }
