@@ -3,6 +3,7 @@ package finalgame.lib.GraphicsEngine;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.texture.Texture;
 
+import finalgame.lib.Resources.ImageResource;
 import finalgame.world.Scenes.World;
 
 public class Drawing {
@@ -14,7 +15,8 @@ public class Drawing {
 	 * @param tint
 	 * @param gl
 	 */
-	public static void drawImage(Texture texture, float x, float y, float[] tint, GL2 gl) {
+	public static void drawImage(ImageResource image, float x, float y, float[] tint, GL2 gl) {
+		Texture texture = image.getTexture();
 
 		if (texture != null) {
 			gl.glBindTexture(GL2.GL_TEXTURE_2D, texture.getTextureObject());
@@ -48,7 +50,8 @@ public class Drawing {
 	 * @param tint
 	 * @param gl
 	 */
-	public static void drawImage(Texture texture, float x, float y, float width, float height, float[] tint, GL2 gl) {
+	public static void drawImage(ImageResource image, float x, float y, float width, float height, float[] tint, GL2 gl) {
+		Texture texture = image.getTexture();
 
 		if (texture != null) {
 			gl.glBindTexture(GL2.GL_TEXTURE_2D, texture.getTextureObject());

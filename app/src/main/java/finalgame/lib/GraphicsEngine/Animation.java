@@ -1,18 +1,16 @@
 package finalgame.lib.GraphicsEngine;
 
-import com.jogamp.opengl.util.texture.Texture;
-
-import finalgame.lib.Resources.SpriteManagement.Spritesheet;
+import finalgame.lib.Resources.ImageResource;
 
 public class Animation {
-	private Spritesheet animation;
+	private ImageResource[] frames;
 	private int currentFrame = 0;
 	public int rate = 8;
 	private long lastFrameTime;
 	private boolean loop = true;
 
-	public Animation(Spritesheet spriteSheet, boolean loop) {
-		this.animation = spriteSheet;
+	public Animation(ImageResource[] frames, boolean loop) {
+		this.frames = frames;
 		this.loop = loop;
 	}
 
@@ -20,7 +18,7 @@ public class Animation {
 		long currentTime = System.nanoTime();
 		if (currentTime > (lastFrameTime + (1000000000 / rate))) {
 			currentFrame++;
-			if (currentFrame >= animation.frames.length) {
+			if (currentFrame >= frames.length) {
 				if (loop) {
 					currentFrame = 0;
 				} else {
@@ -35,7 +33,7 @@ public class Animation {
 	/** 
 	 * @return ImageResource
 	 */
-	public Texture getImage() {
-		return animation.frames[currentFrame];
+	public ImageResource getImage() {
+		return frames[currentFrame];
 	}
 }

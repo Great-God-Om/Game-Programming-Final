@@ -11,7 +11,6 @@ import finalgame.lib.Resources.ImageResource;
 import finalgame.lib.util.Vector2d;
 
 public class Dungeon {
-	// TODO: THIS WILL NEED TO BE FIXED
 	public static ImageResource[] floorTileImages = new ImageResource[] {
 			new ImageResource("Dungeon/floor/floor_1.png"),
 			new ImageResource("Dungeon/floor/floor_1.png"),
