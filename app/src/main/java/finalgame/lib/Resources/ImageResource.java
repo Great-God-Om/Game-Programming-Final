@@ -13,18 +13,24 @@ import finalgame.lib.GraphicsEngine.Renderer;
 
 public class ImageResource {
 	private Texture texture = null;
-	private BufferedImage image = null;
+	public BufferedImage image = null;
 
 	public ImageResource(String path) {
 
 		try {
-			// image = ImageIO.read(new File(p.toString()));
 			var url = App.class.getClassLoader().getResource(path);
 			image = ImageIO.read(url);
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
+		if (image != null) {
+			image.flush();
+		}
+	}
+	public ImageResource(BufferedImage image) {
+
+		this.image = image;
 		if (image != null) {
 			image.flush();
 		}

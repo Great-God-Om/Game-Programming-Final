@@ -13,7 +13,7 @@ import finalgame.world.Board;
 import finalgame.world.GameObject;
 import finalgame.world.Controllers.Enemies.Enemy;
 import finalgame.world.Controllers.Enemies.Skeleton.Skeleton;
-import finalgame.world.Controllers.Enemies.Vampire.Vampire;
+import finalgame.world.Controllers.Enemies.Slime.Slime;
 import finalgame.world.Controllers.Player.Player;
 import finalgame.world.Items.HealthPotion;
 import finalgame.world.Items.Item;
@@ -98,7 +98,7 @@ public class World extends Scene {
 				if (rand.nextFloat() < 0.5f) { // TODO: WILL IMPLEMENT ENEMY SPAWN CHANCE WHEN MORE ENEMIES EXIST
 					enemy = new Skeleton();
 				} else {
-					enemy = new Vampire();
+					enemy = new Slime();
 				}
 				enemy.position = floor.position;
 				gameObjects.add(enemy);
