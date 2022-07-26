@@ -14,7 +14,7 @@ public class PlayerHealth extends UIElement {
 	private float scaleFactor = 13f;
 	private final float container_width = 0.8557692307692307f * scaleFactor,
 			container_height = 0.1442307692307692f * scaleFactor;
-	private float bar_width = 0.870f * container_width, bar_height = 0.43f * container_height;
+	private float bar_width = 0.870f * container_width, bar_height = 0.45f * container_height;
 	private float padding = 0.2f;
 	private Vector2d position;
 	ImageResource[] sprites = new ImageResource[] {
@@ -32,7 +32,7 @@ public class PlayerHealth extends UIElement {
 		position = new Vector2d(-Renderer.w_units + padding, Renderer.h_units - container_height - padding);
 
 		Drawing.drawImage(sprites[1], Camera.position.x + this.position.x + 0.125f * container_width,
-				Camera.position.y + this.position.y + 0.43f * container_height,
+				Camera.position.y + this.position.y + 0.41f * container_height,
 				bar_width * (float)World.player.health / (float)World.player.maxHealth,
 				bar_height, new float[] { 1, 1, 1 }, gl);
 		Drawing.drawImage(sprites[0], Camera.position.x + this.position.x, Camera.position.y + this.position.y,

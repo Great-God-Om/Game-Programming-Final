@@ -15,4 +15,7 @@ public class Spritesheet {
 					spriteSheet.image.getSubimage(i * SPRITESHEET_SPRITE_WIDTH, 0, SPRITESHEET_SPRITE_WIDTH,
 							SPRITESHEET_SPRITE_HEIGHT));
 	}
+	public Spritesheet(ImageResource[] frames){
+		this.frames = frames;
+	}
 }
