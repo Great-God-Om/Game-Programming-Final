@@ -32,6 +32,12 @@ application {
     mainClass = 'finalgame.App'
 }
 
+jar {
+    manifest {
+        attributes( 'Main-Class' : 'finalgame.App')
+    }
+}
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
